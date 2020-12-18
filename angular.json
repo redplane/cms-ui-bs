@@ -1,0 +1,131 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ng-main": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ng-main",
+      "sourceRoot": "projects/ng-main/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ng-main",
+            "index": "projects/ng-main/src/index.html",
+            "main": "projects/ng-main/src/main.ts",
+            "polyfills": "projects/ng-main/src/polyfills.ts",
+            "tsConfig": "projects/ng-main/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/ng-main/src/favicon.ico",
+              "projects/ng-main/src/assets"
+            ],
+            "styles": [
+              "projects/ng-main/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ng-main/src/environments/environment.ts",
+                  "with": "projects/ng-main/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ng-main:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ng-main:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ng-main:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-main/src/test.ts",
+            "polyfills": "projects/ng-main/src/polyfills.ts",
+            "tsConfig": "projects/ng-main/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-main/karma.conf.js",
+            "assets": [
+              "projects/ng-main/src/favicon.ico",
+              "projects/ng-main/src/assets"
+            ],
+            "styles": [
+              "projects/ng-main/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-main/tsconfig.app.json",
+              "projects/ng-main/tsconfig.spec.json",
+              "projects/ng-main/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ng-main/e2e/protractor.conf.js",
+            "devServerTarget": "ng-main:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ng-main:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-main",
+  "cli": {
+    "analytics": "46c2a1ab-1b9e-40fb-83d4-a9fb07f71b23"
+  }
+}
