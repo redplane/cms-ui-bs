@@ -3,9 +3,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/spec",
-    "types": [
-      "jasmine"
-    ]
+    "types": ["jest", "jquery", "jsdom", "node", "jasmine"],
+    "module": "commonjs",
+    "allowJs": true
   },
   "files": [
     "src/test.ts",
@@ -14,5 +14,8 @@
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
-  ]
+  ],
+  "exclude": ["src/test.ts", "src/**/*.spec.ts", "**/*.stories.ts", "src/jest-config", "e2e/src/test.ts", "e2e/src/**/*.spec.ts", "e2e/src/app.e2e-spec.ts",  "./tests/",
+    "./node_modules/",
+    "./dist/"]
 }

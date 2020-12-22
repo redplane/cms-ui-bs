@@ -1,9 +1,8 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
-    "types": []
+    "types": ["jest", "jquery", "jsdom", "node", "jasmine"]
   },
   "files": [
     "src/main.ts",
@@ -11,5 +10,8 @@
   ],
   "include": [
     "src/**/*.d.ts"
-  ]
+  ],
+  "exclude": ["src/test.ts", "src/**/*.spec.ts", "**/*.stories.ts", "src/jest-config", "e2e/src/test.ts", "e2e/src/**/*.spec.ts", "e2e/src/app.e2e-spec.ts",  "./tests/",
+    "./node_modules/",
+    "./dist/"]
 }
