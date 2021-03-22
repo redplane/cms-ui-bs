@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
-    "types": ["jest", "jquery", "jsdom", "node", "jasmine"]
+    "types": ["jest", "jquery", "jsdom", "node"]
   },
   "files": [
     "src/main.ts",
