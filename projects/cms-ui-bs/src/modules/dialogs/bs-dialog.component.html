@@ -1,0 +1,101 @@
+<!--Dialog header-->
+<div class="modal-header">
+  <!--Modal Title-->
+  <ng-container [ngSwitch]="getTitleType()">
+
+    <!--Template title-->
+    <ng-container *ngSwitchCase="'template'" [ngTemplateOutlet]="title"></ng-container>
+
+    <!--Text title-->
+    <h4 class="modal-title" *ngSwitchCase="'string'">{{title}}</h4>
+
+    <!--Html content title-->
+    <div *ngSwitchCase="'html'" [innerHTML]="title.content"></div>
+  </ng-container>
+</div>
+
+<!--Dialog body-->
+<div class="modal-body"
+     [ngSwitch]="getMessageType()">
+
+  <!--Icon-->
+  <div class="row">
+    <div class="col-12"
+         [ngSwitch]="getIconKind()">
+
+      <!--Html icon-->
+      <ng-container *ngSwitchCase="'html'"
+                    [innerHTML]="getIcon()">
+      </ng-container>
+
+      <!--Template icon-->
+      <ng-container *ngSwitchCase="'template'"
+                    [ngTemplateOutlet]="getIcon()">
+      </ng-container>
+    </div>
+  </div>
+
+  <!--Content-->
+  <div class="row">
+    <div class="col-12">
+      <!--Template message-->
+      <ng-container *ngSwitchCase="'template'"
+                    [ngTemplateOutlet]="message"></ng-container>
+
+      <!--Html content-->
+      <ng-container *ngSwitchCase="'html'"
+                    [innerHTML]="message.content"></ng-container>
+
+      <!--Text content-->
+      <ng-container *ngSwitchDefault>
+        <div *ngIf="message && message.length">{{ message }}</div>
+      </ng-container>
+    </div>
+  </div>
+
+
+</div>
+
+<!--Dialog footer-->
+<div class="modal-footer"
+     *ngIf="buttons && buttons.length">
+
+  <ng-container *ngFor="let button of buttons"
+                [ngSwitch]="getButtonType(button)">
+
+    <!--Basic button-->
+    <button
+      *ngSwitchCase="'basic'"
+      [class]="getDialogButtonClass(button)"
+      (click)="dialogButtonClicked(button)"
+      type="button"
+    >
+      <ng-container [ngSwitch]="getButtonContentType(button.content)">
+
+        <!--Template-->
+        <ng-container *ngSwitchCase="'template'">
+          <ng-template [ngTemplateOutlet]="button.content"
+                       [ngTemplateOutletContext]="{ $implicit: button}"></ng-template>
+        </ng-container>
+
+        <!--Html content-->
+        <ng-container *ngSwitchCase="'html'"
+                      [innerHTML]="button.content">
+        </ng-container>
+
+        <!--Text content-->
+        <ng-container *ngSwitchDefault>{{button.content}}</ng-container>
+      </ng-container>
+    </button>
+
+    <!--Template button-->
+    <ng-template
+      *ngSwitchCase="'template'"
+      [ngTemplateOutlet]="button.content"
+      [ngTemplateOutletContext]="{ $implicit: button }"
+    >
+    </ng-template>
+  </ng-container>
+
+
+</div>

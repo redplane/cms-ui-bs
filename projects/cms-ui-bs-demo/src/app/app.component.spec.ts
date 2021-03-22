@@ -29,6 +29,6 @@ describe('AppComponent', () => {
   it(`should have as title 'cms-ui-bs'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('cms-ui-bs');
+    expect(app.title).toEqual('cms-ui-bs-demo');
   });
 });

@@ -1,5 +1,5 @@
 import {Meta, Story} from '@storybook/angular/types-6-0';
-import {DialogDemoComponent} from '../projects/cms-ui-bs/src/app/modules/dialog-demo/dialog-demo.component';
+import {DialogDemoComponent} from '../projects/cms-ui-bs-demo/src/app/modules/dialog-demo/dialog-demo.component';
 
 export default {
   title: 'Example/Dialog',

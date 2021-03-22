@@ -5,7 +5,7 @@
         {
             "name": "BasicBsDialogBuilder",
             "id": "injectable-BasicBsDialogBuilder-0fa7a0e3d8c51fe1a67373ce52a717c4",
-            "file": "projects/cms-ui-bs/src/app/services/implementations/dialog/basic-bs-dialog.builder.ts",
+            "file": "projects/cms-ui-bs-demo/src/app/services/implementations/dialog/basic-bs-dialog.builder.ts",
             "properties": [
                 {
                     "name": "_bsDialog",
@@ -77,7 +77,7 @@
         {
             "name": "BasicDialogService",
             "id": "injectable-BasicDialogService-64a756bf2644be1711339d7ff9c7e05b",
-            "file": "projects/cms-ui-bs/src/app/services/implementations/dialog/basic-dialog.service.ts",
+            "file": "projects/cms-ui-bs-demo/src/app/services/implementations/dialog/basic-dialog.service.ts",
             "properties": [],
             "methods": [],
             "description": "",
@@ -113,7 +113,7 @@
         {
             "name": "BasicDialogSetting",
             "id": "class-BasicDialogSetting-37d58f353937e5392a28042a3ab4bc1f",
-            "file": "projects/cms-ui-bs/src/app/models/dialog/basic-dialog-settings.ts",
+            "file": "projects/cms-ui-bs-demo/src/app/models/dialog/basic-dialog-settings.ts",
             "type": "class",
             "sourceCode": "import {HtmlContent, IDialogButton, IDialogSetting} from '@cms-ui/core';\r\nimport {TemplateRef} from '@angular/core';\r\nimport {DialogKindConstant} from '../../constants/dialog-kind.constants';\r\n\r\nexport class BasicDialogSetting implements IDialogSetting {\r\n\r\n  //#region Properties\r\n\r\n  public readonly kind: string;\r\n\r\n  public backdropClasses: string[];\r\n\r\n  public buttons: IDialogButton[];\r\n\r\n  public dialogClasses: string[];\r\n\r\n  public disableClose: boolean;\r\n\r\n  public height: string;\r\n\r\n  public maxHeight: string | undefined;\r\n\r\n  public maxWidth: string | undefined;\r\n\r\n  public message: string | HtmlContent | TemplateRef<any>;\r\n\r\n  public minHeight: string | undefined;\r\n\r\n  public minWidth: string | undefined;\r\n\r\n  public title: string | HtmlContent | TemplateRef<any>;\r\n\r\n  public width: string;\r\n\r\n  public centered: boolean;\r\n\r\n  //#endregion\r\n\r\n\r\n  //#region Constructor\r\n\r\n  public constructor() {\r\n    this.kind = DialogKindConstant.basic;\r\n    this.backdropClasses = [];\r\n    this.buttons = [];\r\n    this.dialogClasses = [];\r\n    this.disableClose = false;\r\n    this.height = 'auto';\r\n    this.maxHeight = undefined;\r\n    this.maxWidth = undefined;\r\n    this.message = '';\r\n    this.minHeight = undefined;\r\n    this.minWidth = undefined;\r\n    this.title = '';\r\n    this.width = 'auto';\r\n    this.centered = false;\r\n  }\r\n\r\n  //#endregion\r\n\r\n}\r\n",
             "constructorObj": {
@@ -281,7 +281,7 @@
         {
             "name": "DialogKindConstant",
             "id": "class-DialogKindConstant-162f4013b4c3e237f78d7d6edbc59b7b",
-            "file": "projects/cms-ui-bs/src/app/constants/dialog-kind.constants.ts",
+            "file": "projects/cms-ui-bs-demo/src/app/constants/dialog-kind.constants.ts",
             "type": "class",
             "sourceCode": "export class DialogKindConstant {\r\n\r\n  //#region Properties\r\n\r\n  public static readonly basic = 'BASIC';\r\n\r\n  //#endregion\r\n\r\n}\r\n",
             "properties": [
@@ -310,8 +310,8 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-61fbe62a69fe4880934b566036e1b531",
-            "file": "projects/cms-ui-bs/src/app/app.component.ts",
+            "id": "component-AppComponent-ef6691612059ba50ca3b94ee9be85fa7",
+            "file": "projects/cms-ui-bs-demo/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -331,7 +331,7 @@
             "propertiesClass": [
                 {
                     "name": "title",
-                    "defaultValue": "'cms-ui-bs'",
+                    "defaultValue": "'cms-ui-bs-demo'",
                     "type": "string",
                     "optional": false,
                     "description": "",
@@ -344,7 +344,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss']\r\n})\r\nexport class AppComponent {\r\n  title = 'cms-ui-bs';\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss']\r\n})\r\nexport class AppComponent {\r\n  title = 'cms-ui-bs-demo';\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -358,7 +358,7 @@
         {
             "name": "BasicBsDialogComponent",
             "id": "component-BasicBsDialogComponent-79166d935d0b8a40a9fcd64f8ce9633f",
-            "file": "projects/cms-ui-bs/src/app/modules/shared/basic-bs-dialog/basic-bs-dialog.component.ts",
+            "file": "projects/cms-ui-bs-demo/src/app/modules/shared/basic-bs-dialog/basic-bs-dialog.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -511,7 +511,7 @@
         {
             "name": "DialogDemoComponent",
             "id": "component-DialogDemoComponent-49fdaad17de6b11988b79493889db868",
-            "file": "projects/cms-ui-bs/src/app/modules/dialog-demo/dialog-demo.component.ts",
+            "file": "projects/cms-ui-bs-demo/src/app/modules/dialog-demo/dialog-demo.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -920,7 +920,7 @@
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/cms-ui-bs/src/test.ts",
+                "file": "projects/cms-ui-bs-demo/src/test.ts",
                 "type": "",
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
             },
@@ -928,7 +928,7 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/cms-ui-bs/src/environments/environment.prod.ts",
+                "file": "projects/cms-ui-bs-demo/src/environments/environment.prod.ts",
                 "type": "object",
                 "defaultValue": "{\r\n  production: true\r\n}"
             },
@@ -936,7 +936,7 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/cms-ui-bs/src/environments/environment.ts",
+                "file": "projects/cms-ui-bs-demo/src/environments/environment.ts",
                 "type": "object",
                 "defaultValue": "{\r\n  production: false\r\n}"
             },
@@ -1000,7 +1000,7 @@
                 "name": "require",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/cms-ui-bs/src/test.ts",
+                "file": "projects/cms-ui-bs-demo/src/test.ts",
                 "type": "literal type"
             },
             {
@@ -1056,12 +1056,12 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
-            "projects/cms-ui-bs/src/test.ts": [
+            "projects/cms-ui-bs-demo/src/test.ts": [
                 {
                     "name": "context",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/cms-ui-bs/src/test.ts",
+                    "file": "projects/cms-ui-bs-demo/src/test.ts",
                     "type": "",
                     "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
                 },
@@ -1069,26 +1069,26 @@
                     "name": "require",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/cms-ui-bs/src/test.ts",
+                    "file": "projects/cms-ui-bs-demo/src/test.ts",
                     "type": "literal type"
                 }
             ],
-            "projects/cms-ui-bs/src/environments/environment.prod.ts": [
+            "projects/cms-ui-bs-demo/src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/cms-ui-bs/src/environments/environment.prod.ts",
+                    "file": "projects/cms-ui-bs-demo/src/environments/environment.prod.ts",
                     "type": "object",
                     "defaultValue": "{\r\n  production: true\r\n}"
                 }
             ],
-            "projects/cms-ui-bs/src/environments/environment.ts": [
+            "projects/cms-ui-bs-demo/src/environments/environment.ts": [
                 {
                     "name": "environment",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/cms-ui-bs/src/environments/environment.ts",
+                    "file": "projects/cms-ui-bs-demo/src/environments/environment.ts",
                     "type": "object",
                     "defaultValue": "{\r\n  production: false\r\n}"
                 }
@@ -1217,7 +1217,7 @@
         "children": [
             {
                 "name": "routes",
-                "filename": "projects/cms-ui-bs/src/app/app-routing.module.ts",
+                "filename": "projects/cms-ui-bs-demo/src/app/app-routing.module.ts",
                 "module": "AppRoutingModule",
                 "children": [
                     {
@@ -1229,7 +1229,7 @@
                                 "children": [
                                     {
                                         "name": "routes",
-                                        "filename": "projects/cms-ui-bs/src/app/modules/dialog-demo/dialog-demo-routing.module.ts",
+                                        "filename": "projects/cms-ui-bs-demo/src/app/modules/dialog-demo/dialog-demo-routing.module.ts",
                                         "module": "DialogDemoRoutingModule",
                                         "children": [
                                             {
@@ -1254,7 +1254,7 @@
         "status": "low",
         "files": [
             {
-                "filePath": "projects/cms-ui-bs/src/app/app.component.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/app/app.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "AppComponent",
@@ -1263,7 +1263,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/cms-ui-bs/src/app/constants/dialog-kind.constants.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/app/constants/dialog-kind.constants.ts",
                 "type": "class",
                 "linktype": "classe",
                 "name": "DialogKindConstant",
@@ -1272,7 +1272,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/cms-ui-bs/src/app/models/dialog/basic-dialog-settings.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/app/models/dialog/basic-dialog-settings.ts",
                 "type": "class",
                 "linktype": "classe",
                 "name": "BasicDialogSetting",
@@ -1281,7 +1281,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/cms-ui-bs/src/app/modules/dialog-demo/dialog-demo.component.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/app/modules/dialog-demo/dialog-demo.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "DialogDemoComponent",
@@ -1290,7 +1290,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/cms-ui-bs/src/app/modules/shared/basic-bs-dialog/basic-bs-dialog.component.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/app/modules/shared/basic-bs-dialog/basic-bs-dialog.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "BasicBsDialogComponent",
@@ -1299,7 +1299,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/cms-ui-bs/src/app/services/implementations/dialog/basic-bs-dialog.builder.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/app/services/implementations/dialog/basic-bs-dialog.builder.ts",
                 "type": "injectable",
                 "linktype": "injectable",
                 "name": "BasicBsDialogBuilder",
@@ -1308,7 +1308,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/cms-ui-bs/src/app/services/implementations/dialog/basic-dialog.service.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/app/services/implementations/dialog/basic-dialog.service.ts",
                 "type": "injectable",
                 "linktype": "injectable",
                 "name": "BasicDialogService",
@@ -1317,7 +1317,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/cms-ui-bs/src/environments/environment.prod.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/environments/environment.prod.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1327,7 +1327,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/cms-ui-bs/src/environments/environment.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/environments/environment.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1337,7 +1337,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/cms-ui-bs/src/test.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/test.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1347,7 +1347,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/cms-ui-bs/src/test.ts",
+                "filePath": "projects/cms-ui-bs-demo/src/test.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

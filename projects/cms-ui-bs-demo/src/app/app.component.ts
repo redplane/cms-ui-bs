@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'cms-ui-bs';
+  title = 'cms-ui-bs-demo';
 }

@@ -3,15 +3,15 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cms-ui-bs": {
+    "cms-ui-bs-demo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/cms-ui-bs",
-      "sourceRoot": "projects/cms-ui-bs/src",
+      "root": "projects/cms-ui-bs-demo",
+      "sourceRoot": "projects/cms-ui-bs-demo/src",
       "prefix": "app",
       "architect": {
         "build": {
@@ -122,10 +122,49 @@
           }
         }
       }
+    },
+    "cms-ui-bs": {
+      "projectType": "library",
+      "root": "projects/cms-ui-bs",
+      "sourceRoot": "projects/cms-ui-bs/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/cms-ui-bs/tsconfig.lib.json",
+            "project": "projects/cms-ui-bs/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/cms-ui-bs/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/cms-ui-bs/src/test.ts",
+            "tsConfig": "projects/cms-ui-bs/tsconfig.spec.json",
+            "karmaConfig": "projects/cms-ui-bs/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/cms-ui-bs/tsconfig.lib.json",
+              "projects/cms-ui-bs/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
-
   },
-  "defaultProject": "cms-ui-bs",
+  "defaultProject": "cms-ui-bs-demo",
   "cli": {
     "analytics": "46c2a1ab-1b9e-40fb-83d4-a9fb07f71b23"
   }

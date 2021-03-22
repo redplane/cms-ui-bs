@@ -1,5 +1,5 @@
 {
-  "extends": "../projects/cms-ui-bs/tsconfig.app.json",
+  "extends": "../projects/cms-ui-bs-demo/tsconfig.app.json",
   "compilerOptions": {
     "types": [
       "node"
