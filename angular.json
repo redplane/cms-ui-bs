@@ -42,8 +42,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/ng-main/src/environments/environment.ts",
-                  "with": "projects/ng-main/src/environments/environment.production.ts"
+                  "replace": "projects/cms-ui-bs-demo/src/environments/environment.ts",
+                  "with": "projects/cms-ui-bs-demo/src/environments/environment.production.ts"
                 }
               ],
               "optimization": true,
