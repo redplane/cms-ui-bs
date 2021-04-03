@@ -13,12 +13,6 @@
       "es2018"
     ],
     "paths": {
-      "@cms-ui/core": [
-        "../cms-ui/dist/cms-ui/public-api.d.ts"
-      ],
-      "@cms-ui/core/*": [
-        "../cms-ui/dist/cms-ui/public-api.d.ts"
-      ]
     }
   },
   "angularCompilerOptions": {

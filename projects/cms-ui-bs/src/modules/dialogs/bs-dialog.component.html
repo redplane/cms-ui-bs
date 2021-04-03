@@ -1,22 +1,28 @@
 <!--Dialog header-->
-<div class="modal-header">
-  <!--Modal Title-->
-  <ng-container [ngSwitch]="getTitleType()">
-
-    <!--Template title-->
-    <ng-container *ngSwitchCase="'template'" [ngTemplateOutlet]="title"></ng-container>
-
-    <!--Text title-->
-    <h4 class="modal-title" *ngSwitchCase="'string'">{{title}}</h4>
-
-    <!--Html content title-->
-    <div *ngSwitchCase="'html'" [innerHTML]="title.content"></div>
+<ng-container [ngSwitch]="getTitleType()">
+  <ng-container *ngSwitchCase="'template'"
+                [ngTemplateOutlet]="title">
   </ng-container>
-</div>
+
+  <ng-container *ngSwitchCase="'string'">
+    <div class="modal-header {{getTitleBackgroundColor()}}"
+         *ngIf="title && title.length">
+      <!--Text title-->
+      <h4 class="modal-title">{{title}}</h4>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'html'">
+    <!--Html content title-->
+    <div *ngIf="title && title.content && title.content.length"
+         [innerHTML]="title.content"></div>
+  </ng-container>
+
+</ng-container>
+
 
 <!--Dialog body-->
-<div class="modal-body"
-     [ngSwitch]="getMessageType()">
+<div class="modal-body">
 
   <!--Icon-->
   <div class="row">
@@ -24,9 +30,9 @@
          [ngSwitch]="getIconKind()">
 
       <!--Html icon-->
-      <ng-container *ngSwitchCase="'html'"
-                    [innerHTML]="getIcon()">
-      </ng-container>
+      <div *ngSwitchCase="'html'"
+           [innerHTML]="getIcon() | toHtmlContentValue">
+      </div>
 
       <!--Template icon-->
       <ng-container *ngSwitchCase="'template'"
@@ -35,23 +41,25 @@
     </div>
   </div>
 
-  <!--Content-->
-  <div class="row">
-    <div class="col-12">
-      <!--Template message-->
-      <ng-container *ngSwitchCase="'template'"
-                    [ngTemplateOutlet]="message"></ng-container>
+  <ng-container [ngSwitch]="getMessageType()">
+    <!--Content-->
+    <div class="row">
+      <div class="col-12">
+        <!--Template message-->
+        <ng-container *ngSwitchCase="'template'"
+                      [ngTemplateOutlet]="message"></ng-container>
 
-      <!--Html content-->
-      <ng-container *ngSwitchCase="'html'"
-                    [innerHTML]="message.content"></ng-container>
+        <!--Html content-->
+        <div *ngSwitchCase="'html'"
+             [innerHTML]="message | toHtmlContentValue"></div>
 
-      <!--Text content-->
-      <ng-container *ngSwitchDefault>
-        <div *ngIf="message && message.length">{{ message }}</div>
-      </ng-container>
+        <!--Text content-->
+        <ng-container *ngSwitchDefault>
+          <div *ngIf="message && message.length">{{ message }}</div>
+        </ng-container>
+      </div>
     </div>
-  </div>
+  </ng-container>
 
 
 </div>
@@ -79,9 +87,9 @@
         </ng-container>
 
         <!--Html content-->
-        <ng-container *ngSwitchCase="'html'"
-                      [innerHTML]="button.content">
-        </ng-container>
+        <div *ngSwitchCase="'html'"
+             [innerHTML]="button.content">
+        </div>
 
         <!--Text content-->
         <ng-container *ngSwitchDefault>{{button.content}}</ng-container>

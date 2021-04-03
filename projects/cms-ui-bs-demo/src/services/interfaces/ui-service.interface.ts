@@ -1,0 +1,2 @@
+export interface IUiService {
+}

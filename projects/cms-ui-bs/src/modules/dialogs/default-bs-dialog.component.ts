@@ -1,20 +1,37 @@
-import {Component, Inject, Injector, Input, OnDestroy, TemplateRef} from '@angular/core';
+import {Component, InjectFlags, Injector, OnDestroy, TemplateRef} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {first, tap} from 'rxjs/operators';
 import {v4 as uuid} from 'uuid';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {BsDialogActions} from '../../constants/bs-dialog-actions';
+import {
+  BS_DIALOG_DEFAULT_CONFIRMATION_ICON_PROVIDER,
+  BS_DIALOG_DEFAULT_ERROR_ICON_PROVIDER, BS_DIALOG_DEFAULT_INFO_ICON_PROVIDER,
+  BS_DIALOG_DEFAULT_WARNING_ICON_PROVIDER,
+  BS_DIALOG_SETTINGS_PROVIDER
+} from '../../constants/injectors';
 import {
   BasicDialogButton,
-  ConfirmationDialogSettings, DialogKindConstant,
-  DialogResult, ErrorDialogSettings,
+  ConfirmationDialogSettings,
+  DialogKindConstant,
+  DialogResult,
+  ErrorDialogSettings,
   HtmlContent,
   IDialogButton,
-  IDialogSettings, InfoDialogSettings,
-  TemplateDialogButton, WarningDialogSettings
+  IDialogSettings,
+  InfoDialogSettings,
+  TemplateDialogButton,
+  WarningDialogSettings
 } from '@cms-ui/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {DialogActionConstant} from '../../constants/dialog-action.constant';
-import {BS_DIALOG_SETTINGS_PROVIDER} from '../../constants/injector.constant';
+import {BsWarningDialogSettings} from '../../models/implementations/bs-warning-dialog-settings';
+import {BsDialogKinds} from '../../constants/bs-dialog-kinds';
+import {BsConfirmationDialogSettings} from '../../models/implementations/bs-confirmation-dialog-settings';
+import {BsErrorDialogSettings} from '../../models/implementations/bs-error-dialog-settings';
+import {BsInfoDialogSettings} from '../../models/implementations/bs-info-dialog-settings';
 
+@Component({
+  template: ''
+})
 export abstract class DefaultBsDialogComponent implements OnDestroy {
 
   //#region Properties
@@ -110,7 +127,7 @@ export abstract class DefaultBsDialogComponent implements OnDestroy {
         return;
       }
 
-      this._activeDialog.close(new DialogResult(DialogActionConstant.manuallyClosed, null));
+      this._activeDialog.close(new DialogResult(BsDialogActions.manuallyClosed, null));
       return;
     }
 
@@ -183,20 +200,36 @@ export abstract class DefaultBsDialogComponent implements OnDestroy {
   // Get dialog kind.
   public getDialogKind(): string | null {
 
-    if (this._settings instanceof ConfirmationDialogSettings) {
+    if (this._settings instanceof ConfirmationDialogSettings || this._settings.kind === DialogKindConstant.confirmation) {
       return DialogKindConstant.confirmation;
     }
 
-    if (this._settings instanceof InfoDialogSettings) {
+    if (this._settings instanceof BsConfirmationDialogSettings || this._settings.kind === BsDialogKinds.confirmation) {
+      return BsDialogKinds.confirmation;
+    }
+
+    if (this._settings instanceof ErrorDialogSettings || this._settings.kind === DialogKindConstant.error) {
+      return DialogKindConstant.error;
+    }
+
+    if (this._settings instanceof BsErrorDialogSettings || this._settings.kind === BsDialogKinds.error) {
+      return BsDialogKinds.error;
+    }
+
+    if (this._settings instanceof InfoDialogSettings || this._settings.kind === DialogKindConstant.info) {
       return DialogKindConstant.info;
     }
 
-    if (this._settings instanceof WarningDialogSettings) {
+    if (this._settings instanceof BsInfoDialogSettings || this._settings.kind === BsDialogKinds.info) {
+      return BsDialogKinds.info;
+    }
+
+    if (this._settings instanceof WarningDialogSettings || this._settings.kind === DialogKindConstant.warning) {
       return DialogKindConstant.warning;
     }
 
-    if (this._settings instanceof ErrorDialogSettings) {
-      return DialogKindConstant.error;
+    if (this._settings instanceof BsWarningDialogSettings || this._settings.kind === BsDialogKinds.warning) {
+      return BsDialogKinds.warning;
     }
 
     return null;
@@ -205,23 +238,38 @@ export abstract class DefaultBsDialogComponent implements OnDestroy {
   public getIcon(): HtmlContent | TemplateRef<any> | undefined {
 
     // Icon.
-    let icon: HtmlContent | TemplateRef<any> | undefined;
+    let icon: HtmlContent | TemplateRef<any> | undefined = (this._settings as any).icon;
 
-    if (this._settings instanceof ConfirmationDialogSettings) {
-      icon = (this._settings as ConfirmationDialogSettings).icon;
-    } else if (this._settings instanceof InfoDialogSettings) {
-      icon = (this._settings as InfoDialogSettings).icon;
-    } else if (this._settings instanceof WarningDialogSettings) {
-      icon = (this._settings as WarningDialogSettings).icon;
-    } else if (this._settings instanceof ErrorDialogSettings) {
-      icon = (this._settings as ErrorDialogSettings).icon;
+    if (icon) {
+      return icon;
     }
 
-    if (!icon) {
-      return undefined;
-    }
+    const dialogKind = this.getDialogKind();
+    switch (dialogKind) {
+      case DialogKindConstant.confirmation:
+      case BsDialogKinds.confirmation:
+        icon = this._injector
+          .get(BS_DIALOG_DEFAULT_CONFIRMATION_ICON_PROVIDER, null, InjectFlags.Optional) || undefined;
+        break;
 
-    return undefined;
+      case DialogKindConstant.error:
+      case BsDialogKinds.error:
+        icon = this._injector
+          .get(BS_DIALOG_DEFAULT_ERROR_ICON_PROVIDER, null, InjectFlags.Optional) || undefined;
+        break;
+
+      case DialogKindConstant.info:
+      case BsDialogKinds.info:
+        icon = this._injector
+          .get(BS_DIALOG_DEFAULT_INFO_ICON_PROVIDER, null, InjectFlags.Optional) || undefined;
+        break;
+
+      case DialogKindConstant.warning:
+      case BsDialogKinds.warning:
+        icon = this._injector.get(BS_DIALOG_DEFAULT_WARNING_ICON_PROVIDER, undefined, InjectFlags.Optional);
+        break;
+    }
+    return icon;
   }
 
   public getIconKind(): 'html' | 'template' | undefined {

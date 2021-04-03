@@ -1,21 +1,18 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/spec",
-    "types": ["jest", "jquery", "jsdom", "node"],
-    "module": "commonjs",
-    "allowJs": true
+    "types": [
+      "jasmine",
+      "node"
+    ]
   },
   "files": [
     "src/test.ts",
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.spec.ts",
-    "src/**/*.d.ts"
-  ],
-  "exclude": ["src/test.ts", "src/**/*.spec.ts", "**/*.stories.ts", "src/jest-config", "e2e/src/test.ts", "e2e/src/**/*.spec.ts", "e2e/src/app.e2e-spec.ts",  "./tests/",
-    "./node_modules/",
-    "./dist/"]
+    "**/*.spec.ts",
+    "**/*.d.ts"
+  ]
 }

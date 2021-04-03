@@ -2,16 +2,19 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
-    "types": ["jest", "jquery", "jsdom", "node"]
+    "baseUrl": "./",
+    "types": [],
+    "paths": {
+      "@cms-ui/bootstrap": [
+        "../cms-ui-bs/src/public-api.ts"
+      ],
+      "@cms-ui/bootstrap/*": [
+        "../cms-ui-bs/src/public-api.ts"
+      ]
+    }
   },
-  "files": [
-    "src/main.ts",
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts"
-  ],
-  "exclude": ["src/test.ts", "src/**/*.spec.ts", "**/*.stories.ts", "src/jest-config", "e2e/src/test.ts", "e2e/src/**/*.spec.ts", "e2e/src/app.e2e-spec.ts",  "./tests/",
-    "./node_modules/",
-    "./dist/"]
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts"
+  ]
 }

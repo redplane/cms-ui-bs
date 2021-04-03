@@ -17,27 +17,33 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cms-ui-bs",
-            "index": "projects/cms-ui-bs/src/index.html",
-            "main": "projects/cms-ui-bs/src/main.ts",
-            "polyfills": "projects/cms-ui-bs/src/polyfills.ts",
-            "tsConfig": "projects/cms-ui-bs/tsconfig.app.json",
+            "outputPath": "dist/cms-ui-bs-demo",
+            "index": "projects/cms-ui-bs-demo/src/index.html",
+            "main": "projects/cms-ui-bs-demo/src/main.ts",
+            "polyfills": "projects/cms-ui-bs-demo/src/polyfills.ts",
+            "tsConfig": "projects/cms-ui-bs-demo/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/cms-ui-bs/src/favicon.ico",
-              "projects/cms-ui-bs/src/assets"
+              "projects/cms-ui-bs-demo/src/favicon.ico",
+              "projects/cms-ui-bs-demo/src/assets",
+              "projects/cms-ui-bs-demo/src/netlify.toml"
             ],
             "styles": [
-              "projects/cms-ui-bs/src/styles.scss"
+              "projects/cms-ui-bs-demo/src/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/popper.js/dist/popper.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/startbootstrap-sb-admin-2/js/sb-admin-2.js"
+            ]
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/cms-ui-bs/src/environments/environment.ts",
-                  "with": "projects/cms-ui-bs/src/environments/environment.prod.ts"
+                  "replace": "projects/ng-main/src/environments/environment.ts",
+                  "with": "projects/ng-main/src/environments/environment.production.ts"
                 }
               ],
               "optimization": true,
@@ -59,24 +65,35 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/cms-ui-bs-demo/src/environments/environment.ts",
+                  "with": "projects/cms-ui-bs-demo/src/environments/environment.dev.ts"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cms-ui-bs:build"
+            "browserTarget": "cms-ui-bs-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cms-ui-bs:build:production"
+              "browserTarget": "cms-ui-bs-demo:build:production"
+            },
+            "dev": {
+              "browserTarget": "cms-ui-bs-demo:build:dev"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cms-ui-bs:build"
+            "browserTarget": "cms-ui-bs-demo:build"
           }
         },
         "test": {
@@ -87,11 +104,11 @@
             "tsConfig": "projects/cms-ui-bs/tsconfig.spec.json",
             "karmaConfig": "projects/cms-ui-bs/karma.conf.js",
             "assets": [
-              "projects/cms-ui-bs/src/favicon.ico",
-              "projects/cms-ui-bs/src/assets"
+              "projects/cms-ui-bs-demo/src/favicon.ico",
+              "projects/cms-ui-bs-demo/src/assets"
             ],
             "styles": [
-              "projects/cms-ui-bs/src/styles.scss"
+              "projects/cms-ui-bs-demo/src/styles.scss"
             ],
             "scripts": []
           }
@@ -100,9 +117,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/cms-ui-bs/tsconfig.app.json",
-              "projects/cms-ui-bs/tsconfig.spec.json",
-              "projects/cms-ui-bs/e2e/tsconfig.json"
+              "projects/cms-ui-bs-demo/tsconfig.app.json",
+              "projects/cms-ui-bs-demo/tsconfig.spec.json",
+              "projects/cms-ui-bs-demo/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -112,12 +129,12 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/cms-ui-bs/e2e/protractor.conf.js",
-            "devServerTarget": "cms-ui-bs:serve"
+            "protractorConfig": "projects/cms-ui-bs-demo/e2e/protractor.conf.js",
+            "devServerTarget": "cms-ui-bs-demo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "cms-ui-bs:serve:production"
+              "devServerTarget": "cms-ui-bs-demo:serve:production"
             }
           }
         }
