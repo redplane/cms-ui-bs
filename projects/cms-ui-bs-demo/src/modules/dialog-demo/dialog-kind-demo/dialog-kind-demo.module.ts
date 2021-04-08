@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
-import {DialogDemoRoutingModule} from './dialog-demo-routing.module';
-import {DialogDemoComponent} from './dialog-demo.component';
+import {DialogKindDemoRoutingModule} from './dialog-kind-demo-routing.module';
+import {DialogKindDemoComponent} from './dialog-kind-demo.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {
   BS_DIALOG_DEFAULT_CONFIRMATION_ICON_PROVIDER,
@@ -12,10 +12,10 @@ import {HtmlContent} from '@cms-ui/core';
 
 @NgModule({
   declarations: [
-    DialogDemoComponent
+    DialogKindDemoComponent
   ],
   imports: [
-    DialogDemoRoutingModule,
+    DialogKindDemoRoutingModule,
     TranslateModule,
     BsDialogModule.forRoot()
   ],
@@ -38,5 +38,5 @@ import {HtmlContent} from '@cms-ui/core';
     }
   ]
 })
-export class DialogDemoModule {
+export class DialogKindDemoModule {
 }

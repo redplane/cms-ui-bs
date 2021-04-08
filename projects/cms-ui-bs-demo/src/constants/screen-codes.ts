@@ -4,7 +4,7 @@ export class ScreenCodes {
 
   public static readonly dashboard = 'DASHBOARD';
 
-  public static readonly dialogDemo = 'DIALOG_DEMO';
+  public static readonly dialogKindDemo = 'DIALOG_DEMO';
 
   //#endregion
 

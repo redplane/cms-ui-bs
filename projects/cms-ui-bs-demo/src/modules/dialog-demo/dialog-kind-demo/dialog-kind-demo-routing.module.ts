@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {DialogDemoComponent} from './dialog-demo.component';
+import {DialogKindDemoComponent} from './dialog-kind-demo.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DialogDemoComponent
+    component: DialogKindDemoComponent
   }
 ];
 
@@ -14,6 +14,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class DialogDemoRoutingModule {
+export class DialogKindDemoRoutingModule {
 
 }

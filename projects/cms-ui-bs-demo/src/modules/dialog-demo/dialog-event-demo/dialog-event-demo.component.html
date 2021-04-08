@@ -1,0 +1,11 @@
+<div class="alert alert-info">
+  <ng-container [ngSwitch]="confirmed === null || confirmed === undefined">
+    <b *ngSwitchCase="true">Please click on <i>Display dialog</i> button</b>
+    <div *ngSwitchDefault>
+      <span>Option confirmed: </span>&nbsp;<b>{{confirmed}}</b>
+    </div>
+  </ng-container>
+</div>
+<button class="btn btn-outline-danger">
+  Display dialog
+</button>

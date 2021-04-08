@@ -10,7 +10,7 @@ export class MainScreenCodeResolve extends DefaultScreenCodeResolver {
   constructor() {
     const codeToUrl: { [p: string]: string } = {};
     codeToUrl[ScreenCodes.dashboard] = '/dashboard';
-    codeToUrl[ScreenCodes.dialogDemo] = '/dialog-demo';
+    codeToUrl[ScreenCodes.dialogKindDemo] = '/dialog-kind-demo';
 
     super(codeToUrl);
   }

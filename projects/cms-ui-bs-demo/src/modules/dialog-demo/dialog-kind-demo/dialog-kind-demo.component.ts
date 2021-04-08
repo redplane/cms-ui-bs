@@ -12,10 +12,10 @@ import {Subscription} from 'rxjs';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-demo',
-  templateUrl: 'dialog-demo.component.html',
-  styleUrls: ['dialog-demo.component.scss']
+  templateUrl: 'dialog-kind-demo.component.html',
+  styleUrls: ['dialog-kind-demo.component.scss']
 })
-export class DialogDemoComponent implements OnInit, OnDestroy {
+export class DialogKindDemoComponent implements OnInit, OnDestroy {
 
   //#region Properties
 

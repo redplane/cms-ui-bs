@@ -44,8 +44,14 @@ export const routes: Routes = [
               .then(m => m.DashboardModule)
           },
           {
-            path: 'dialog-demo',
-            loadChildren: () => import('./dialog-demo/dialog-demo.module').then(m => m.DialogDemoModule)
+            path: 'dialog-kind-demo',
+            loadChildren: () => import('./dialog-demo/dialog-kind-demo/dialog-kind-demo.module')
+              .then(m => m.DialogKindDemoModule)
+          },
+          {
+            path: 'dialog-event-demo',
+            loadChildren: () => import('./dialog-demo/dialog-event-demo/dialog-event-demo.module')
+              .then(m => m.DialogEventDemoModule)
           }
         ]
       }
