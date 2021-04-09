@@ -79,7 +79,6 @@
       type="button"
     >
       <ng-container [ngSwitch]="getButtonContentType(button.content)">
-
         <!--Template-->
         <ng-container *ngSwitchCase="'template'">
           <ng-template [ngTemplateOutlet]="button.content"
@@ -88,7 +87,7 @@
 
         <!--Html content-->
         <div *ngSwitchCase="'html'"
-             [innerHTML]="button.content">
+             [innerHTML]="button.content.content">
         </div>
 
         <!--Text content-->

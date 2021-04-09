@@ -1,9 +1,11 @@
-import {from, Observable, of} from 'rxjs';
+import {from, Observable, of, throwError} from 'rxjs';
 import {Injector} from '@angular/core';
 import {BsDialogComponent} from '../../modules/dialogs/bs-dialog.component';
-import {IDialogService, IDialogSettings} from '@cms-ui/core';
+import {DialogResult, IDialogService, IDialogSettings} from '@cms-ui/core';
 import {BS_DIALOG_SETTINGS_PROVIDER} from '../../constants/injectors';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {map, mergeMap} from 'rxjs/operators';
+import {BsDialogActions, CmsUiBsExceptions} from '../../constants';
 
 export class BsDialogService implements IDialogService {
 
@@ -63,7 +65,26 @@ export class BsDialogService implements IDialogService {
       size: (settings as any).size || 'md'
     });
 
-    return from(dialogRef.result);
+    return from(dialogRef.result)
+      .pipe(
+        mergeMap(dialogData => {
+
+          if (typeof (dialogData) === 'boolean') {
+            return of(dialogData as any);
+          }
+
+          if (dialogData instanceof DialogResult) {
+            const dialogResult = dialogData as DialogResult<T>;
+            if (dialogResult.action === BsDialogActions.manuallyClosed) {
+              return of(dialogResult.data);
+            }
+
+            return throwError(CmsUiBsExceptions.dialogDismissed);
+          }
+
+          return throwError(CmsUiBsExceptions.invalidDialogResult);
+        })
+      );
   }
 
   public closeAll(): void {

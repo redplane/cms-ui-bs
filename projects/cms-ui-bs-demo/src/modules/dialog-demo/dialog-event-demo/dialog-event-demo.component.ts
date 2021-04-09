@@ -1,7 +1,7 @@
 import {Component, Injector} from '@angular/core';
-import {BasicDialogButton, DIALOG_SERVICE_PROVIDER, DialogResult, IDialogService} from '@cms-ui/core';
+import {BasicDialogButton, DIALOG_SERVICE_PROVIDER, DialogResult, HtmlContent, IDialogService} from '@cms-ui/core';
 import {Subscription} from 'rxjs';
-import {BsErrorDialogSettings} from '../../../../../cms-ui-bs/src/models/implementations/bs-error-dialog-settings';
+import {BsErrorDialogSettings, CmsUiBsExceptions} from '@cms-ui/bootstrap';
 import {BsDialogActions} from '@cms-ui/bootstrap';
 
 @Component({
@@ -50,8 +50,9 @@ export class DialogEventDemoComponent {
 
   public displayDialog(): void {
 
-    const yesDialogButton = new BasicDialogButton('OK', () => new DialogResult(BsDialogActions.manuallyClosed, true));
-    const noDialogButton = new BasicDialogButton('Cancel', () => new DialogResult(BsDialogActions.dismissed, null));
+    const yesDialogButton = new BasicDialogButton('OK', () => new DialogResult(BsDialogActions.manuallyClosed, true), ['btn', 'btn-outline-primary']);
+    const noDialogButton = new BasicDialogButton(new HtmlContent(`<button class="btn">Cancel</button>`),
+      () => new DialogResult(BsDialogActions.dismissed, null), ['btn']);
 
     const dialogSettings = new BsErrorDialogSettings('Are you sure to delete a fake record ?', 'System warning');
     dialogSettings.buttons = [yesDialogButton, noDialogButton];
@@ -59,8 +60,12 @@ export class DialogEventDemoComponent {
     const displayDialogSubscription = this.dialogService
       .displayDialogAsync<boolean>(dialogSettings)
       .subscribe(confirmed => {
+        this._confirmed = confirmed;
+      }, error => {
+        this._confirmed = false;
       });
 
+    this.subscription.add(displayDialogSubscription);
   }
 
   //#endregion

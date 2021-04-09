@@ -4,7 +4,7 @@ import {DialogEventDemoComponent} from './dialog-event-demo.component';
 
 const routes: Routes = [
   {
-    path: 'dialog-event',
+    path: '',
     component: DialogEventDemoComponent
   }
 ];
