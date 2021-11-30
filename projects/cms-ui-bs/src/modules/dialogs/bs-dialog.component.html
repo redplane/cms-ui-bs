@@ -74,7 +74,7 @@
     <!--Basic button-->
     <button
       *ngSwitchCase="'basic'"
-      [class]="getDialogButtonClass(button)"
+      [class]="loadDialogButtonClass(button)"
       (click)="dialogButtonClicked(button)"
       type="button"
     >

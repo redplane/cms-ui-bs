@@ -1,11 +1,13 @@
-import {Component, Injector, OnDestroy, TemplateRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Injector, OnDestroy, TemplateRef} from '@angular/core';
 import {DefaultBsDialogComponent} from './default-bs-dialog.component';
 import {
   BasicDialogButton,
   ConfirmationDialogSettings,
-  DialogKindConstant, ErrorDialogSettings,
+  DialogKindConstant,
+  ErrorDialogSettings,
   HtmlContent,
-  IDialogButton, InfoDialogSettings,
+  IDialogButton,
+  InfoDialogSettings,
   WarningDialogSettings
 } from '@cms-ui/core';
 import {BsWarningDialogSettings} from '../../models/implementations/bs-warning-dialog-settings';
@@ -17,8 +19,9 @@ import {BsInfoDialogSettings} from '../../models/implementations/bs-info-dialog-
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'bs-dialog',
-  styleUrls: ['./bs-dialog.component.scss'],
-  templateUrl: './bs-dialog.component.html'
+  styleUrls: ['../../styles/bs-dialog.component.scss'],
+  templateUrl: './bs-dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BsDialogComponent extends DefaultBsDialogComponent implements OnDestroy {
 
@@ -52,7 +55,7 @@ export class BsDialogComponent extends DefaultBsDialogComponent implements OnDes
 
   //#region Methods
 
-  public getDialogButtonClass(dialogButton: IDialogButton): string | null {
+  public loadDialogButtonClass(dialogButton: IDialogButton): string | null {
 
     if (!(dialogButton instanceof BasicDialogButton)) {
       return null;
